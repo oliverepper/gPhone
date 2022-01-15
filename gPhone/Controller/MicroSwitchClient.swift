@@ -12,6 +12,7 @@ import UIKit
 import CoreMedia
 import WebRTC
 import Combine
+import NIO
 
 final class MicroSwitchClient: ObservableObject {
     enum Keys: String {
@@ -34,7 +35,10 @@ final class MicroSwitchClient: ObservableObject {
     private let connection: ClientConnection
     private var stream: BidirectionalStreamingCall<Signal, Signal>?
     private var webRTCClient = WebRTCClient(iceServers: Config.default.webRTCIceServers)
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
+
+    var inviteToken: AnyCancellable?
+    var answerToken: AnyCancellable?
 
     init() {
         UserDefaults.standard.register(defaults: [
@@ -96,13 +100,9 @@ final class MicroSwitchClient: ObservableObject {
         }
     }
 
-    func invite(_ handle: String) {
-        guard let connectedSession = connectedSession else {
-            print("Please connect session first")
-            return
-        }
-
-        guard let data = try? JSONEncoder().encode(SessionID(value: connectedSession)) else {
+    func invite(_ handle: String, sessionID: UUID) {
+        inviteToken = nil
+        guard let data = try? JSONEncoder().encode(SessionID(value: sessionID)) else {
             return
         }
 
@@ -162,7 +162,7 @@ final class MicroSwitchClient: ObservableObject {
         }).cascade(to: nil)
     }
 
-    func connectToSession(sessionID: String) {
+    func connectToSession(sessionID: UUID) {
         if stream == nil {
             print("Connecting to SignalService")
             setupSignalStream()
@@ -172,12 +172,12 @@ final class MicroSwitchClient: ObservableObject {
 
         stream?.sendMessage(.with {
             $0.connect = .with {
-                $0.sessionID = sessionID
+                $0.sessionID = sessionID.uuidString
             }
         }).whenComplete({ result in
             if case .success() = result {
                 DispatchQueue.main.async {
-                    self.connectedSession = UUID(uuidString: sessionID)
+                    self.connectedSession = sessionID
                 }
             }
         })
@@ -221,6 +221,7 @@ final class MicroSwitchClient: ObservableObject {
     }
 
     func sendAnswer() {
+        self.inviteToken = nil
         self.webRTCClient.answer { sdp in
             DispatchQueue.main.async {
                 self.hasLocalSdp = true

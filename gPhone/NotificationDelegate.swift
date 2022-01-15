@@ -26,6 +26,14 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.banner)
+        guard let base64 = notification.request.content.userInfo["payload"] as? String,
+              let data = Data(base64Encoded: base64),
+              let payload = try? JSONDecoder().decode(SessionID.self, from: data) else {
+                  completionHandler(.sound)
+                  return
+              }
+
+        invitationSubject.send(payload.value)
+        completionHandler(.sound)
     }
 }

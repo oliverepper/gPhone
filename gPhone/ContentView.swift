@@ -8,64 +8,100 @@
 import SwiftUI
 import GRPC
 import SwiftProtobuf
+import Combine
 
-struct ContentView: View {
+struct MyButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.largeTitle)
+            .padding()
+            .background(.orange)
+            .clipShape(Capsule())
+    }
+}
+
+struct StatusView: View {
     @EnvironmentObject var client: MicroSwitchClient
 
     var body: some View {
-        if let sessionID = client.connectedSession {
-            Text(sessionID.description)
-                .onTapGesture {
-                    UIPasteboard.general.string = sessionID.uuidString
-                }
-        }
-        List(client.handles, id:\.self) { handle in
-            Button(handle) {
-                client.invite(handle)
+        VStack {
+            HStack {
+                Text(client.connectionString)
+                statusIndicator().frame(width: 25)
             }
-        }
-        statusIndicator().frame(width: 30)
-            .onAppear {
-                client.checkServer()
-                client.listHandles()
-            }
-        Text("Invited to Session \(client.invitedToSession?.uuidString.prefix(10).description ?? "")").font(.headline)
-        Group {
-            Text("has local SDP: \(client.hasLocalSdp.description)")
-            Text("has remote SDP: \(client.hasRemoteSdp.description)")
-            Text("local candidate count: \(client.localCandidateCount)")
-            Text("remote candidate count: \(client.remoteCandidateCount)")
-        }
-        Group {
-            Button("Create Session") {
-                client.connect()
-            }
-            if let session = client.invitedToSession?.uuidString {
-                Button("Connect to Session") {
-                    client.connectToSession(sessionID: session)
+            if let sessionID = client.connectedSession {
+                VStack {
+                    Text("Connected Session")
+                    Text(sessionID.description)
+                        .onTapGesture {
+                            UIPasteboard.general.string = sessionID.uuidString
+                        }
                 }
             }
-//            Button("Broadcast Message") {
-//                client.broadcast(message: "Hallo Welt".data(using: .utf8)!)
-//            }
-//            Button("Send Offer") {
-//                client.sendOffer()
-//            }
-            Button("Answer") {
-                client.sendAnswer()
+            if let invitedToSession = client.invitedToSession {
+                Text("Invited to Session")
+                Text(invitedToSession.description)
             }
-            Button("Stop") {
-                client.disconnect()
+            Group {
+                Text("has local SDP: \(client.hasLocalSdp.description)")
+                Text("has remote SDP: \(client.hasRemoteSdp.description)")
+                Text("local candidate count: \(client.localCandidateCount)")
+                Text("remote candidate count: \(client.remoteCandidateCount)")
             }
-        }.font(.system(size: 22.0))
+        }
     }
-    
+
     private func statusIndicator() -> some View {
         if (client.serverReachable) {
             return Circle().foregroundColor(.green)
         } else {
             return Circle().foregroundColor(.red)
         }
+    }
+
+}
+
+struct ContentView: View {
+    @EnvironmentObject var client: MicroSwitchClient
+
+    var body: some View {
+        StatusView()
+            .onAppear {
+                client.checkServer()
+                client.listHandles()
+            }
+            .frame(height: 200)
+
+        List(client.handles, id:\.self) { handle in
+            Button("Call \(handle)") {
+                client.inviteToken = client.$connectedSession
+                    .dropFirst()
+                    .compactMap { $0 }
+                    .sink { id in
+                        print("Session id \(id)")
+                        client.invite(handle, sessionID: id)
+                    }
+
+                client.connect()
+            }
+        }
+
+        if let invited = client.invitedToSession {
+            Button("Talk") {
+                client.answerToken = client.$connectedSession.combineLatest(client.$hasRemoteSdp)
+                    .dropFirst()
+                    .compactMap { $0 }
+                    .sink { _, _ in
+                        client.sendAnswer()
+                    }
+
+                client.connectToSession(sessionID: invited)
+            }.buttonStyle(MyButton())
+        }
+
+//        Button("Stop") {
+//            client.disconnect()
+//        }.buttonStyle(MyButton())
     }
 }
 
