@@ -1,0 +1,512 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A7023B9D2792AF640021560F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7023B9C2792AF640021560F /* Config.swift */; };
+		A724EB222791EA0B00DEA7CB /* SessionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB212791EA0B00DEA7CB /* SessionDescription.swift */; };
+		A724EB242791EA1000DEA7CB /* IceCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB232791EA1000DEA7CB /* IceCandidate.swift */; };
+		A724EB262791EA1500DEA7CB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB252791EA1500DEA7CB /* Message.swift */; };
+		A724EB282791EA8700DEA7CB /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB272791EA8700DEA7CB /* WebRTCClient.swift */; };
+		A724EB2A2791EB5200DEA7CB /* RTCStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB292791EB5200DEA7CB /* RTCStates.swift */; };
+		A724EB2C2791EE3C00DEA7CB /* NotificationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB2B2791EE3C00DEA7CB /* NotificationPermission.swift */; };
+		A724EB2E2791F2BF00DEA7CB /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A724EB2D2791F2BF00DEA7CB /* NotificationDelegate.swift */; };
+		A7DB0CB527908DDD0019AF9D /* gPhoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CB427908DDD0019AF9D /* gPhoneApp.swift */; };
+		A7DB0CB727908DDD0019AF9D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CB627908DDD0019AF9D /* ContentView.swift */; };
+		A7DB0CB927908DDE0019AF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DB0CB827908DDE0019AF9D /* Assets.xcassets */; };
+		A7DB0CBC27908DDE0019AF9D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7DB0CBB27908DDE0019AF9D /* Preview Assets.xcassets */; };
+		A7DB0CC427908E160019AF9D /* CGRPCZlib in Frameworks */ = {isa = PBXBuildFile; productRef = A7DB0CC327908E160019AF9D /* CGRPCZlib */; };
+		A7DB0CC627908E160019AF9D /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = A7DB0CC527908E160019AF9D /* GRPC */; };
+		A7DB0CCB27908EAC0019AF9D /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = A7DB0CCA27908EAC0019AF9D /* WebRTC */; };
+		A7DB0CCD2790910C0019AF9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CCC2790910C0019AF9D /* AppDelegate.swift */; };
+		A7DB0CD4279096F30019AF9D /* MicroSwitchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CD3279096F30019AF9D /* MicroSwitchClient.swift */; };
+		A7DB0CD927909D850019AF9D /* Data+hexStringFromPushToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CD827909D610019AF9D /* Data+hexStringFromPushToken.swift */; };
+		A7DB0CED2790A07C0019AF9D /* main.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CEB2790A07C0019AF9D /* main.grpc.swift */; };
+		A7DB0CEE2790A07C0019AF9D /* main.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7DB0CEC2790A07C0019AF9D /* main.pb.swift */; };
+		A7DB0CF12790A7190019AF9D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A7DB0CF02790A7190019AF9D /* Settings.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A7023B9C2792AF640021560F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A724EB212791EA0B00DEA7CB /* SessionDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDescription.swift; sourceTree = "<group>"; };
+		A724EB232791EA1000DEA7CB /* IceCandidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceCandidate.swift; sourceTree = "<group>"; };
+		A724EB252791EA1500DEA7CB /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		A724EB272791EA8700DEA7CB /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		A724EB292791EB5200DEA7CB /* RTCStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCStates.swift; sourceTree = "<group>"; };
+		A724EB2B2791EE3C00DEA7CB /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
+		A724EB2D2791F2BF00DEA7CB /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		A7DB0CB127908DDD0019AF9D /* gPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7DB0CB427908DDD0019AF9D /* gPhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gPhoneApp.swift; sourceTree = "<group>"; };
+		A7DB0CB627908DDD0019AF9D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A7DB0CB827908DDE0019AF9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A7DB0CBB27908DDE0019AF9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A7DB0CCC2790910C0019AF9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A7DB0CD3279096F30019AF9D /* MicroSwitchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroSwitchClient.swift; sourceTree = "<group>"; };
+		A7DB0CD527909AF60019AF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A7DB0CD627909C100019AF9D /* gPhone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gPhone.entitlements; sourceTree = "<group>"; };
+		A7DB0CD827909D610019AF9D /* Data+hexStringFromPushToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+hexStringFromPushToken.swift"; sourceTree = "<group>"; };
+		A7DB0CEB2790A07C0019AF9D /* main.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.grpc.swift; sourceTree = "<group>"; };
+		A7DB0CEC2790A07C0019AF9D /* main.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.pb.swift; sourceTree = "<group>"; };
+		A7DB0CF02790A7190019AF9D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A7DB0CAE27908DDD0019AF9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7DB0CC627908E160019AF9D /* GRPC in Frameworks */,
+				A7DB0CCB27908EAC0019AF9D /* WebRTC in Frameworks */,
+				A7DB0CC427908E160019AF9D /* CGRPCZlib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A724EB1A2791E46900DEA7CB /* WebRTC */ = {
+			isa = PBXGroup;
+			children = (
+				A7023B9C2792AF640021560F /* Config.swift */,
+				A724EB292791EB5200DEA7CB /* RTCStates.swift */,
+				A724EB272791EA8700DEA7CB /* WebRTCClient.swift */,
+				A724EB252791EA1500DEA7CB /* Message.swift */,
+				A724EB232791EA1000DEA7CB /* IceCandidate.swift */,
+				A724EB212791EA0B00DEA7CB /* SessionDescription.swift */,
+			);
+			path = WebRTC;
+			sourceTree = "<group>";
+		};
+		A7DB0CA827908DDD0019AF9D = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CB327908DDD0019AF9D /* gPhone */,
+				A7DB0CB227908DDD0019AF9D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A7DB0CB227908DDD0019AF9D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CB127908DDD0019AF9D /* gPhone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A7DB0CB327908DDD0019AF9D /* gPhone */ = {
+			isa = PBXGroup;
+			children = (
+				A724EB1A2791E46900DEA7CB /* WebRTC */,
+				A7DB0CEF2790A6300019AF9D /* Resources */,
+				A7DB0CDA27909F270019AF9D /* Controller */,
+				A7DB0CD727909D580019AF9D /* Extensions */,
+				A7DB0CD627909C100019AF9D /* gPhone.entitlements */,
+				A7DB0CD527909AF60019AF9D /* Info.plist */,
+				A7DB0CCE2790951D0019AF9D /* Model */,
+				A7DB0CB427908DDD0019AF9D /* gPhoneApp.swift */,
+				A7DB0CCC2790910C0019AF9D /* AppDelegate.swift */,
+				A7DB0CB627908DDD0019AF9D /* ContentView.swift */,
+				A7DB0CBA27908DDE0019AF9D /* Preview Content */,
+				A724EB2B2791EE3C00DEA7CB /* NotificationPermission.swift */,
+				A724EB2D2791F2BF00DEA7CB /* NotificationDelegate.swift */,
+			);
+			path = gPhone;
+			sourceTree = "<group>";
+		};
+		A7DB0CBA27908DDE0019AF9D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CBB27908DDE0019AF9D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A7DB0CCE2790951D0019AF9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CEA2790A05D0019AF9D /* generated */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7DB0CD727909D580019AF9D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CD827909D610019AF9D /* Data+hexStringFromPushToken.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A7DB0CDA27909F270019AF9D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CD3279096F30019AF9D /* MicroSwitchClient.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A7DB0CEA2790A05D0019AF9D /* generated */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CEB2790A07C0019AF9D /* main.grpc.swift */,
+				A7DB0CEC2790A07C0019AF9D /* main.pb.swift */,
+			);
+			path = generated;
+			sourceTree = "<group>";
+		};
+		A7DB0CEF2790A6300019AF9D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A7DB0CB827908DDE0019AF9D /* Assets.xcassets */,
+				A7DB0CF02790A7190019AF9D /* Settings.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A7DB0CB027908DDD0019AF9D /* gPhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7DB0CBF27908DDE0019AF9D /* Build configuration list for PBXNativeTarget "gPhone" */;
+			buildPhases = (
+				A7DB0CAD27908DDD0019AF9D /* Sources */,
+				A7DB0CAE27908DDD0019AF9D /* Frameworks */,
+				A7DB0CAF27908DDD0019AF9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gPhone;
+			packageProductDependencies = (
+				A7DB0CC327908E160019AF9D /* CGRPCZlib */,
+				A7DB0CC527908E160019AF9D /* GRPC */,
+				A7DB0CCA27908EAC0019AF9D /* WebRTC */,
+			);
+			productName = gPhone;
+			productReference = A7DB0CB127908DDD0019AF9D /* gPhone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A7DB0CA927908DDD0019AF9D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					A7DB0CB027908DDD0019AF9D = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = A7DB0CAC27908DDD0019AF9D /* Build configuration list for PBXProject "gPhone" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A7DB0CA827908DDD0019AF9D;
+			packageReferences = (
+				A7DB0CC227908E160019AF9D /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				A7DB0CC927908EAC0019AF9D /* XCRemoteSwiftPackageReference "WebRTC" */,
+			);
+			productRefGroup = A7DB0CB227908DDD0019AF9D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A7DB0CB027908DDD0019AF9D /* gPhone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7DB0CAF27908DDD0019AF9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7DB0CBC27908DDE0019AF9D /* Preview Assets.xcassets in Resources */,
+				A7DB0CF12790A7190019AF9D /* Settings.bundle in Resources */,
+				A7DB0CB927908DDE0019AF9D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A7DB0CAD27908DDD0019AF9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7DB0CD927909D850019AF9D /* Data+hexStringFromPushToken.swift in Sources */,
+				A724EB2C2791EE3C00DEA7CB /* NotificationPermission.swift in Sources */,
+				A7023B9D2792AF640021560F /* Config.swift in Sources */,
+				A7DB0CED2790A07C0019AF9D /* main.grpc.swift in Sources */,
+				A724EB242791EA1000DEA7CB /* IceCandidate.swift in Sources */,
+				A724EB2A2791EB5200DEA7CB /* RTCStates.swift in Sources */,
+				A7DB0CCD2790910C0019AF9D /* AppDelegate.swift in Sources */,
+				A724EB2E2791F2BF00DEA7CB /* NotificationDelegate.swift in Sources */,
+				A724EB222791EA0B00DEA7CB /* SessionDescription.swift in Sources */,
+				A7DB0CB727908DDD0019AF9D /* ContentView.swift in Sources */,
+				A7DB0CD4279096F30019AF9D /* MicroSwitchClient.swift in Sources */,
+				A724EB262791EA1500DEA7CB /* Message.swift in Sources */,
+				A7DB0CEE2790A07C0019AF9D /* main.pb.swift in Sources */,
+				A724EB282791EA8700DEA7CB /* WebRTCClient.swift in Sources */,
+				A7DB0CB527908DDD0019AF9D /* gPhoneApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A7DB0CBD27908DDE0019AF9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A7DB0CBE27908DDE0019AF9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A7DB0CC027908DDE0019AF9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = gPhone/gPhone.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"gPhone/Preview Content\"";
+				DEVELOPMENT_TEAM = AWJ83G3EPY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = gPhone/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We want to spy on you";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.gPhone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A7DB0CC127908DDE0019AF9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = gPhone/gPhone.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"gPhone/Preview Content\"";
+				DEVELOPMENT_TEAM = AWJ83G3EPY;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = gPhone/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We want to spy on you";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.gPhone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A7DB0CAC27908DDD0019AF9D /* Build configuration list for PBXProject "gPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7DB0CBD27908DDE0019AF9D /* Debug */,
+				A7DB0CBE27908DDE0019AF9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7DB0CBF27908DDE0019AF9D /* Build configuration list for PBXNativeTarget "gPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7DB0CC027908DDE0019AF9D /* Debug */,
+				A7DB0CC127908DDE0019AF9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A7DB0CC227908E160019AF9D /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		A7DB0CC927908EAC0019AF9D /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stasel/WebRTC.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 96.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7DB0CC327908E160019AF9D /* CGRPCZlib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7DB0CC227908E160019AF9D /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = CGRPCZlib;
+		};
+		A7DB0CC527908E160019AF9D /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7DB0CC227908E160019AF9D /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		A7DB0CCA27908EAC0019AF9D /* WebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7DB0CC927908EAC0019AF9D /* XCRemoteSwiftPackageReference "WebRTC" */;
+			productName = WebRTC;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A7DB0CA927908DDD0019AF9D /* Project object */;
+}
