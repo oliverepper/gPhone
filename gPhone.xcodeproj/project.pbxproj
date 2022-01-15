@@ -39,7 +39,7 @@
 		A724EB292791EB5200DEA7CB /* RTCStates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCStates.swift; sourceTree = "<group>"; };
 		A724EB2B2791EE3C00DEA7CB /* NotificationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPermission.swift; sourceTree = "<group>"; };
 		A724EB2D2791F2BF00DEA7CB /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
-		A7DB0CB127908DDD0019AF9D /* gPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7DB0CB127908DDD0019AF9D /* gPhone-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gPhone-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7DB0CB427908DDD0019AF9D /* gPhoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gPhoneApp.swift; sourceTree = "<group>"; };
 		A7DB0CB627908DDD0019AF9D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A7DB0CB827908DDE0019AF9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		A7DB0CB227908DDD0019AF9D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A7DB0CB127908DDD0019AF9D /* gPhone.app */,
+				A7DB0CB127908DDD0019AF9D /* gPhone-Demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 				A7DB0CCA27908EAC0019AF9D /* WebRTC */,
 			);
 			productName = gPhone;
-			productReference = A7DB0CB127908DDD0019AF9D /* gPhone.app */;
+			productReference = A7DB0CB127908DDD0019AF9D /* gPhone-Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -397,6 +397,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = gPhone/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = gPhone;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We want to spy on you";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We want to spy on you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -409,7 +411,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.gPhone";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)-Demo";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,6 +431,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = gPhone/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = gPhone;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We want to spy on you";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We want to spy on you";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -441,7 +445,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.oliver-epper.gPhone";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)-Demo";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
