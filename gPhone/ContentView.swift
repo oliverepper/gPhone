@@ -75,14 +75,15 @@ struct ContentView: View {
         List(client.handles, id:\.self) { handle in
             Button("Call \(handle)") {
                 client.inviteToken = client.$connectedSession
-//                    .dropFirst()
                     .compactMap { $0 }
-                    .sink { id in
-                        print("Session id \(id)")
-                        client.invite(handle, sessionID: id)
+                    .sink { sessionID in
+                        print("Session ID")
+                        client.invite(handle, sessionID: sessionID)
                     }
 
-                client.connect()
+                if (client.connectedSession == nil) {
+                    client.connect()
+                }
             }
         }
 

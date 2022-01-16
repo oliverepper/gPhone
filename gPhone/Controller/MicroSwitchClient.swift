@@ -146,13 +146,7 @@ final class MicroSwitchClient: ObservableObject {
                     $0.sessionID = sessionID
                 }
             }
-        }).whenComplete({ result in
-            if case .success() = result {
-                DispatchQueue.main.async {
-                    self.connectedSession = to
-                }
-            }
-        })
+        }).cascade(to: nil)
     }
 
     func broadcast(message: Data, to session: UUID? = nil) {
@@ -271,7 +265,7 @@ final class MicroSwitchClient: ObservableObject {
             print("Someone else connected to my session. I will do the do")
             self.sendOffer()
         } else {
-            print("I created the Session \(data.sessionID)")
+            print("Connected to Session \(data.sessionID)")
             DispatchQueue.main.async {
                 self.connectedSession = UUID(uuidString: data.sessionID)
             }
