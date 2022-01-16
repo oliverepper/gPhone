@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>server</string>
 			<key>DefaultValue</key>
-			<string>ms.oliver-epper.de</string>
+			<string>ms4.oliver-epper.de</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>

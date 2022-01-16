@@ -43,7 +43,7 @@ final class MicroSwitchClient: ObservableObject {
     init() {
         // handle default
         UserDefaults.standard.register(defaults: [
-            Self.Keys.server.rawValue : "ms.oliver-epper.de",
+            Self.Keys.server.rawValue : "ms4.oliver-epper.de",
             Self.Keys.port.rawValue : "3015",
             Self.Keys.insecure.rawValue : false
         ])
@@ -178,7 +178,6 @@ final class MicroSwitchClient: ObservableObject {
                 self.connectedSession = nil
                 self.invitedToSession = nil
                 self.serverReachable = false
-                self.connectionString = ""
                 self.handles = .init()
 
                 self.hasLocalSdp = false
