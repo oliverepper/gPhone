@@ -75,7 +75,7 @@ struct ContentView: View {
         List(client.handles, id:\.self) { handle in
             Button("Call \(handle)") {
                 client.inviteToken = client.$connectedSession
-                    .dropFirst()
+//                    .dropFirst()
                     .compactMap { $0 }
                     .sink { id in
                         print("Session id \(id)")
@@ -95,13 +95,15 @@ struct ContentView: View {
                         client.sendAnswer()
                     }
 
-                client.connectToSession(sessionID: invited)
+                client.connect(to: invited)
             }.buttonStyle(MyButton())
         }
 
-//        Button("Stop") {
-//            client.disconnect()
-//        }.buttonStyle(MyButton())
+        if let _ = client.connectedSession {
+            Button("Stop") {
+                client.disconnect()
+            }.buttonStyle(MyButton())
+        }
     }
 }
 

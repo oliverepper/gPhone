@@ -34,13 +34,14 @@ final class MicroSwitchClient: ObservableObject {
 
     private let connection: ClientConnection
     private var stream: BidirectionalStreamingCall<Signal, Signal>?
-    private var webRTCClient = WebRTCClient(iceServers: Config.default.webRTCIceServers)
+    private var webRTCClient: WebRTCClient?
     var cancellables = Set<AnyCancellable>()
 
     var inviteToken: AnyCancellable?
     var answerToken: AnyCancellable?
 
     init() {
+        // handle default
         UserDefaults.standard.register(defaults: [
             Self.Keys.server.rawValue : "ms.oliver-epper.de",
             Self.Keys.port.rawValue : "3015",
@@ -64,14 +65,15 @@ final class MicroSwitchClient: ObservableObject {
                 .connect(host: host, port: port)
         }
 
+        // subscribe to invitation, invitationSubject is a global var
         invitationSubject.sink { id in
             self.invitedToSession = id
         }.store(in: &cancellables)
 
         connection.connectivity.delegate = self
-        webRTCClient.delegate = self
     }
 
+    // MARK: public API
     func checkServer() {
         let client = ServerInfoServiceClient(channel: connection)
         client.info(.init()).status.whenSuccess { _ in
@@ -130,39 +132,7 @@ final class MicroSwitchClient: ObservableObject {
         }
     }
 
-    func setupSignalStream() {
-        let client = SignalServiceClient(channel: connection)
-
-        stream = client.signal() { signal in
-            switch signal.type {
-            case let .connect(data):    self.handleConnectionEvent(data)
-            case let .broadcast(data):  self.handleBroadcastEvent(data)
-            case let .error(error):
-                print(error)
-            case .none:
-                print("I cannot understand the signal type")
-            }
-        }
-
-        stream?.status.whenFailure { error in
-            print(error)
-        }
-    }
-
-    func connect() {
-        if stream == nil {
-            print("Connecting to SignalService")
-            setupSignalStream()
-        } else {
-            print("SignalService already connected")
-        }
-
-        stream?.sendMessage(.with {
-            $0.connect = .init()
-        }).cascade(to: nil)
-    }
-
-    func connectToSession(sessionID: UUID) {
+    func connect(to: UUID? = nil) {
         if stream == nil {
             print("Connecting to SignalService")
             setupSignalStream()
@@ -172,12 +142,14 @@ final class MicroSwitchClient: ObservableObject {
 
         stream?.sendMessage(.with {
             $0.connect = .with {
-                $0.sessionID = sessionID.uuidString
+                if let sessionID = to?.uuidString {
+                    $0.sessionID = sessionID
+                }
             }
         }).whenComplete({ result in
             if case .success() = result {
                 DispatchQueue.main.async {
-                    self.connectedSession = sessionID
+                    self.connectedSession = to
                 }
             }
         })
@@ -202,13 +174,40 @@ final class MicroSwitchClient: ObservableObject {
     }
 
     func disconnect() {
-        stream?.sendEnd(promise: nil)
-        stream = nil
-        connectedSession = nil
+        self.webRTCClient?.close()
+        self.webRTCClient = nil
+
+        stream?.sendEnd().whenComplete({ result in
+            print("Sended end: \(result)")
+            self.stream = nil
+            DispatchQueue.main.async {
+                self.connectedSession = nil
+                self.invitedToSession = nil
+                self.serverReachable = false
+                self.connectionString = ""
+                self.handles = .init()
+
+                self.hasLocalSdp = false
+                self.hasRemoteSdp = false
+                self.localCandidateCount = 0
+                self.remoteCandidateCount = 0
+
+                self.checkServer()
+                self.listHandles()
+            }
+        })
     }
 
+    // MARK: WebRTC specific
     func sendOffer() {
-        self.webRTCClient.offer { sdp in
+        if self.webRTCClient == nil {
+            print("Creating WebRTC Client")
+            setupWebRTC()
+        } else {
+            print("WebRTC Client already active")
+        }
+
+        self.webRTCClient?.offer { sdp in
             DispatchQueue.main.async {
                 self.hasLocalSdp = true
             }
@@ -222,7 +221,15 @@ final class MicroSwitchClient: ObservableObject {
 
     func sendAnswer() {
         self.inviteToken = nil
-        self.webRTCClient.answer { sdp in
+
+        if self.webRTCClient == nil {
+            print("Creating WebRTC Client")
+            setupWebRTC()
+        } else {
+            print("WebRTC Client already active")
+        }
+
+        self.webRTCClient?.answer { sdp in
             DispatchQueue.main.async {
                 self.hasLocalSdp = true
             }
@@ -231,6 +238,31 @@ final class MicroSwitchClient: ObservableObject {
                 return
             }
             self.broadcast(message: data)
+        }
+    }
+
+    // MARK: private functions
+    private func setupWebRTC() {
+        self.webRTCClient = WebRTCClient(iceServers: Config.default.webRTCIceServers)
+        self.webRTCClient?.delegate = self
+    }
+
+    private func setupSignalStream() {
+        let client = SignalServiceClient(channel: connection)
+
+        stream = client.signal() { signal in
+            switch signal.type {
+            case let .connect(data):    self.handleConnectionEvent(data)
+            case let .broadcast(data):  self.handleBroadcastEvent(data)
+            case let .error(error):
+                print(error)
+            case .none:
+                print("I cannot understand the signal type")
+            }
+        }
+
+        stream?.status.whenFailure { error in
+            print(error)
         }
     }
 
@@ -251,6 +283,13 @@ final class MicroSwitchClient: ObservableObject {
         do {
             let message = try JSONDecoder().decode(Message.self, from: data.payload)
 
+            if self.webRTCClient == nil {
+                print("Creating WebRTC Client")
+                setupWebRTC()
+            } else {
+                print("WebRTC Client already active")
+            }
+
             switch message {
             case let .sdp(sessionDescription):
                 self.handleRemoteSdp(sessionDescription)
@@ -264,7 +303,7 @@ final class MicroSwitchClient: ObservableObject {
     }
 
     private func handleRemoteSdp(_ data: SessionDescription) {
-        self.webRTCClient.set(remoteSdp: data.rtcSessionDescription) { error in
+        self.webRTCClient?.set(remoteSdp: data.rtcSessionDescription) { error in
             if let error = error {
                 print(error)
                 return
@@ -277,7 +316,7 @@ final class MicroSwitchClient: ObservableObject {
     }
 
     private func handleRemoteCandidate(_ data: IceCandidate) {
-        self.webRTCClient.set(remoteCandidate: data.rtcIceCandidate) { error in
+        self.webRTCClient?.set(remoteCandidate: data.rtcIceCandidate) { error in
             if let error = error {
                 print(error)
                 return
@@ -296,7 +335,6 @@ extension MicroSwitchClient: ConnectivityStateDelegate {
     }
 }
 
-
 extension MicroSwitchClient: WebRTCClientDelegate {
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate) {
         DispatchQueue.main.async {
@@ -311,12 +349,14 @@ extension MicroSwitchClient: WebRTCClientDelegate {
     }
 
     func webRTCClient(_ client: WebRTCClient, didChangeConnectionState state: RTCIceConnectionState) {
-        print(#function)
+        print("webRTCClient state: \(state)")
+        if case .disconnected = state {
+            print("Remote hast disconnected")
+            self.disconnect()
+        }
     }
 
     func webRTCClient(_ client: WebRTCClient, didReceiveData data: Data) {
         print(#function)
     }
-
-
 }

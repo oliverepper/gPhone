@@ -105,6 +105,11 @@ final class WebRTCClient: NSObject {
     func set(remoteCandidate: RTCIceCandidate, completion: @escaping (Swift.Error?) -> ()) {
         self.peerConnection.add(remoteCandidate, completionHandler: completion)
     }
+
+    #warning("Don't know if I am happy with this")
+    func close() {
+        self.peerConnection.close()
+    }
     
     // MARK: Media
     func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
