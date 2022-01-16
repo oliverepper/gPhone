@@ -250,6 +250,7 @@ final class MicroSwitchClient: ObservableObject {
             case let .broadcast(data):  self.handleBroadcastEvent(data)
             case let .error(error):
                 print(error)
+                self.disconnect()
             case .none:
                 print("I cannot understand the signal type")
             }
