@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>server</string>
 			<key>DefaultValue</key>
-			<string>ms4.oliver-epper.de</string>
+			<string>mswiitch.oliver-epper.de</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
@@ -38,11 +38,29 @@
 			<key>Key</key>
 			<string>port</string>
 			<key>DefaultValue</key>
-			<string>3015</string>
+			<string>443</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>KeyboardType</key>
 			<string>NumberPad</string>
+			<key>AutocapitalizationType</key>
+			<string>None</string>
+			<key>AutocorrectionType</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Handle</string>
+			<key>Key</key>
+			<string>handle</string>
+			<key>DefaultValue</key>
+			<string>John Doe</string>
+			<key>IsSecure</key>
+			<false/>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
 			<key>AutocapitalizationType</key>
 			<string>None</string>
 			<key>AutocorrectionType</key>

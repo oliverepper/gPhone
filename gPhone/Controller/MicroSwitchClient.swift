@@ -18,6 +18,7 @@ final class MicroSwitchClient: ObservableObject {
     enum Keys: String {
         case server = "server"
         case port
+        case handle
         case insecure
     }
 
@@ -43,8 +44,9 @@ final class MicroSwitchClient: ObservableObject {
     init() {
         // handle default
         UserDefaults.standard.register(defaults: [
-            Self.Keys.server.rawValue : "ms4.oliver-epper.de",
-            Self.Keys.port.rawValue : "3015",
+            Self.Keys.server.rawValue : "mswitch.oliver-epper.de",
+            Self.Keys.port.rawValue : "443",
+            Self.Keys.handle.rawValue : "John Doe",
             Self.Keys.insecure.rawValue : false
         ])
 

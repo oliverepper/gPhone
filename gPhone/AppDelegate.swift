@@ -27,7 +27,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 extension AppDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("Reveiced Token: \(deviceToken)")
-        microSwitchClient.addToken(token: deviceToken, for: UIDevice.current.name)
+        microSwitchClient.addToken(token: deviceToken, for: UserDefaults.standard.string(forKey: MicroSwitchClient.Keys.handle.rawValue) ?? "Unknwon")
     }
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
